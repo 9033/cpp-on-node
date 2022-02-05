@@ -1,0 +1,26 @@
+{
+  "name": "cpp-on-node",
+  "version": "1.0.0",
+  "description": "cpp-on-node",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "build": "g++ -fPIC shared.cpp -shared -o shared.so"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9033/cpp-on-node.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "9033",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/9033/cpp-on-node/issues"
+  },
+  "homepage": "https://github.com/9033/cpp-on-node#readme",
+  "dependencies": {
+    "ffi-napi": "^4.0.3"
+  }
+}
