@@ -1,9 +1,16 @@
-# 설치한거
-`code .`를 처음 실행하면 설치되는 vs code 서버  
-'c++ extension pack' (ms-vscode.cpptools-extension-pack)  
-`sudo apt-get install build-essential gdb`로 컴파일러와 디버거 설치  
-nvm 설치 (https://github.com/nvm-sh/nvm)
-nvm으로 nodejs lts (v16) 설치  
+# 실행환경
++ OS: WSL - Ubuntu 20.04.1 LTS, Windows 10
++ gcc: 9.3.0
+
+# 설치
++ Windows 10
+  - Windows Subsystem Linux - Ubuntu 20 LTS
++ Ubuntu - WSL
+  - `code .`를 처음 실행하면 설치되는 vs code 서버  
+  - 'c++ extension pack' (ms-vscode.cpptools-extension-pack)  
+  - `sudo apt-get install build-essential gdb`로 컴파일러와 디버거 설치  
+  - nvm 설치 (https://github.com/nvm-sh/nvm)
+  - nvm으로 nodejs lts (v16) 설치  
 
 # 컴파일
 - 둘중 하나
