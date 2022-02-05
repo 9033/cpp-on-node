@@ -5,4 +5,6 @@
 extern "C" {
     // function declaration
     int add(int, int);
+
+    double adds(double *, int);
 }
