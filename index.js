@@ -10,6 +10,7 @@ const DoubleArray = ArrayType(ref.types.double)
 const t = ffi.Library('./shared', {
   // 'add': ['int', ['int', 'int']],
   'adds': ['double', ['double *', 'int']],// or 'adds': ['double', [DoubleArray, 'int']],
+  'sort': ['double *', ['double *', 'int']],
 })
 
 const numbers = Array(50000)
@@ -75,3 +76,24 @@ const p1 = async () => {
 p1()
 */
 
+console.time('ffi-sort')
+const buf1 = Float64Array.from(numbers)
+const tt = Buffer.from(buf1.buffer)
+t.sort(tt, numbers.length)
+console.timeEnd('ffi-sort')
+if(numbers.length <= 10)console.log(buf1);
+
+console.time('node-typed-sort')
+const buf3 = Float64Array.from(numbers)
+buf3.sort()
+console.timeEnd('node-typed-sort')
+if(numbers.length <= 10)console.log(buf3);
+
+console.time('node-sort')
+numbers.sort()
+console.timeEnd('node-sort')
+if(numbers.length <= 10)console.log(numbers);
+
+for(let i=0;i<100;i++){
+  if(buf1[i] !== buf3[i] || buf1[i] !== numbers[i])console.log(i, buf1[i], buf3[i], numbers[i])
+}

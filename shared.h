@@ -7,4 +7,6 @@ extern "C" {
     int add(int, int);
 
     double adds(double *, int);
+
+    double* sort(double *add, int len);
 }
