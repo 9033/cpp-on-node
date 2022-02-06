@@ -13,9 +13,9 @@ const t = ffi.Library('./shared', {
   'sort': ['double *', ['double *', 'int']],
 })
 
-const numbers = Array(50000)
+const numbers = Array(50)
 numbers.fill(0)
-for(let i in numbers)numbers[i] = Math.random()
+for(let i in numbers)numbers[i] = Math.random() / 1000000
 
 if(numbers.length <= 10)console.log(numbers);
 
@@ -27,28 +27,28 @@ function adds(numbers){
   return result;
 }
 
-console.time('node')
-const r = adds(numbers)
-console.timeEnd('node')
-console.log(r);
+// console.time('node')
+// const r = adds(numbers)
+// console.timeEnd('node')
+// console.log(r);
 
 // console.time('node-reduce')
 // const r4 = numbers.reduce((p, c)=>(p + c), 0)
 // console.timeEnd('node-reduce')
 // console.log(r4);
 
-console.time('ffi')
-// const r2 = t.adds(numbers, numbers.length) // 'adds': ['double', [DoubleArray, 'int']],
-const n = DoubleArray(numbers) // too slow to convert Number to double
-const r2 = t.adds(n.buffer, numbers.length)
-console.timeEnd('ffi')
-console.log(r2);
+// console.time('ffi')
+// // const r2 = t.adds(numbers, numbers.length) // 'adds': ['double', [DoubleArray, 'int']],
+// const n = DoubleArray(numbers) // too slow to convert Number to double
+// const r2 = t.adds(n.buffer, numbers.length)
+// console.timeEnd('ffi')
+// console.log(r2);
 
-console.time('ffi-2')
-const buf = Float64Array.from(numbers)
-const r3 = t.adds(Buffer.from(buf.buffer), numbers.length)
-console.timeEnd('ffi-2')
-console.log(r3);
+// console.time('ffi-2')
+// const buf = Float64Array.from(numbers)
+// const r3 = t.adds(Buffer.from(buf.buffer), numbers.length)
+// console.timeEnd('ffi-2')
+// console.log(r3);
 
 // console.time('node-typed')
 // const buf2 = Float64Array.from(numbers)
